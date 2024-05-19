@@ -66,4 +66,9 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }

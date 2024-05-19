@@ -27,7 +27,7 @@ fun XuleExposedDropdownMenuBox(list:Array<String>, onElementSelected: (String) -
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(32.dp)
+            .padding(5.dp, 15.dp, 5.dp, 5.dp)
     ) {
         ExposedDropdownMenuBox(
             expanded = expanded,
@@ -37,10 +37,10 @@ fun XuleExposedDropdownMenuBox(list:Array<String>, onElementSelected: (String) -
         ) {
             TextField(
                 value = selectedText,
-                onValueChange = { selectedText = it},
+                onValueChange = { onElementSelected(selectedText) },
                 readOnly = true,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                modifier = Modifier.menuAnchor()
+                modifier = Modifier.menuAnchor().fillMaxWidth(),
             )
 
             ExposedDropdownMenu(
