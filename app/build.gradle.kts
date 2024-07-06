@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "inc.pneuma.xule"
-        minSdk = 24
+        minSdk = 22
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -44,12 +44,13 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/*"
         }
     }
 }
 
 dependencies {
+
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
@@ -71,4 +72,10 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
     //navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    //material icons
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+
+    //cloud api
+    implementation("com.google.cloud:google-cloud-speech:4.40.0")
 }
