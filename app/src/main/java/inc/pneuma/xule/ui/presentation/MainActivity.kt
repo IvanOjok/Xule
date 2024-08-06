@@ -21,10 +21,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import dagger.hilt.android.AndroidEntryPoint
 import inc.pneuma.xule.ui.theme.XuleTheme
+import inc.pneuma.xule.ui.vmodel.AuthViewModel
 import inc.pneuma.xule.widgets.SpeechToTextParser
 import inc.pneuma.xule.widgets.TextToSpeechParser
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val speechToTextParser by lazy {
@@ -81,5 +85,6 @@ class MainActivity : ComponentActivity() {
 fun XulePreview() {
     XuleTheme {
         //XuleMainScreen(this, "Android")
+        ///HomeScreen()
     }
 }

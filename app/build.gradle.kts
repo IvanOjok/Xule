@@ -1,7 +1,17 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
 }
+
+val cryptoKeyPropertiesFile = rootProject.file("local.properties")
+val cryptoKeyProperties = Properties()
+cryptoKeyProperties.load(FileInputStream(cryptoKeyPropertiesFile))
+
 
 android {
     namespace = "inc.pneuma.xule"
@@ -13,6 +23,10 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        android.buildFeatures.buildConfig = true
+        buildConfigField("String", "GEMINI_KEY", cryptoKeyProperties.getProperty("key"))
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,11 +44,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -53,8 +67,8 @@ dependencies {
 
 
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.activity:activity-compose:1.8.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.activity:activity-compose:1.9.1")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -72,10 +86,23 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
     //navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0") //with hilt
 
     //material icons
     implementation("androidx.compose.material:material-icons-extended:1.6.8")
 
     //cloud api
     implementation("com.google.cloud:google-cloud-speech:4.40.0")
+
+    // add the dependency for the Google AI client SDK for Android
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+
+    //datastores
+    implementation("androidx.datastore:datastore:1.1.1")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("com.google.protobuf:protobuf-java:3.25.3")
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.49")
+    ksp("com.google.dagger:hilt-android-compiler:2.48")
 }

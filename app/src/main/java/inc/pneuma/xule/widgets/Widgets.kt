@@ -16,11 +16,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import inc.pneuma.xule.ui.vmodel.AuthViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun XuleExposedDropdownMenuBox(list:Array<String>, onElementSelected: (String) -> Unit) {
+fun XuleExposedDropdownMenuBox(list:Array<String>, viewModel: AuthViewModel) {
     var expanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(list[0]) }
 
@@ -37,7 +38,7 @@ fun XuleExposedDropdownMenuBox(list:Array<String>, onElementSelected: (String) -
         ) {
             TextField(
                 value = selectedText,
-                onValueChange = { onElementSelected(selectedText) },
+                onValueChange = { viewModel.getSelectedValueInMenu.value = selectedText },
                 readOnly = true,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 modifier = Modifier.menuAnchor().fillMaxWidth(),
@@ -53,7 +54,7 @@ fun XuleExposedDropdownMenuBox(list:Array<String>, onElementSelected: (String) -
                         onClick = {
                             selectedText = item
                             expanded = false
-
+                            viewModel.getSelectedValueInMenu.value = item
                         }
                     )
                 }
