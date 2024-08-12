@@ -15,4 +15,16 @@ interface PreferenceRepository {
     suspend fun saveUserGrade(value: String)
 
     suspend fun getUserGrade(): Flow<String>
+
+    suspend fun saveSubjectQuestion(value:String)
+
+    suspend fun getSubjectQuestion() : Flow<String>
+
+    suspend fun saveSubjectTopic(value:String)
+
+    suspend fun getSubjectTopic() : Flow<String>
+
+    suspend fun saveExactQuestion(value:String)
+
+    suspend fun getExactQuestion(): Flow<String>
 }

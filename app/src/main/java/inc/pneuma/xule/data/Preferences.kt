@@ -16,3 +16,9 @@ val TEXT_OR_SPEECH = stringPreferencesKey("text_or_speech")
 val USER_NAME = stringPreferencesKey("user_name")
 
 val USER_GRADE = stringPreferencesKey("user_grade")
+
+val SUBJECT = stringPreferencesKey("selected_subject")
+
+val TOPIC = stringPreferencesKey("selected_topic")
+
+val QUESTION = stringPreferencesKey("asked_question")

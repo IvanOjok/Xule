@@ -3,7 +3,10 @@ package inc.pneuma.xule.data.impl
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import inc.pneuma.xule.data.QUESTION
+import inc.pneuma.xule.data.SUBJECT
 import inc.pneuma.xule.data.TEXT_OR_SPEECH
+import inc.pneuma.xule.data.TOPIC
 import inc.pneuma.xule.data.USER_GRADE
 import inc.pneuma.xule.data.USER_NAME
 import inc.pneuma.xule.domain.repository.PreferenceRepository
@@ -43,6 +46,38 @@ class PreferenceRepositoryImpl @Inject constructor(
     override suspend fun getUserGrade(): Flow<String> = ds.data.map {
         it[USER_GRADE] ?: ""
     }
+
+    override suspend fun saveSubjectQuestion(value: String) {
+        ds.edit {
+            it[SUBJECT] = value
+        }
+    }
+
+    override suspend fun getSubjectQuestion(): Flow<String> = ds.data.map {
+        it[SUBJECT] ?: ""
+    }
+
+    override suspend fun saveSubjectTopic(value: String) {
+        ds.edit {
+            it[TOPIC] = value
+        }
+    }
+
+    override suspend fun getSubjectTopic(): Flow<String> = ds.data.map {
+        it[TOPIC] ?: ""
+    }
+
+
+    override suspend fun saveExactQuestion(value: String) {
+        ds.edit {
+            it[QUESTION] = value
+        }
+    }
+
+    override suspend fun getExactQuestion(): Flow<String> = ds.data.map {
+        it[QUESTION] ?: ""
+    }
+
 
 
 }

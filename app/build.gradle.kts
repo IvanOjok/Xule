@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId = "inc.pneuma.xule"
-        minSdk = 22
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -73,7 +73,7 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material3:material3:1.2.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -97,12 +97,23 @@ dependencies {
     // add the dependency for the Google AI client SDK for Android
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
 
+    //media pipe
+    implementation("com.google.mediapipe:tasks-vision-image-generator:0.10.10") {
+        exclude("com.google.protobuf")
+    }
+
     //datastores
     implementation("androidx.datastore:datastore:1.1.1")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
-    implementation("com.google.protobuf:protobuf-java:3.25.3")
+    //implementation("com.google.protobuf:protobuf-javalite:4.26.1")
+    //protobuf("com.google.protobuf:protobuf-java:3.25.3")
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.49")
     ksp("com.google.dagger:hilt-android-compiler:2.48")
+
+    //scanner
+    implementation("com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1")
+    //images
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }

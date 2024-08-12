@@ -62,3 +62,8 @@ fun XuleExposedDropdownMenuBox(list:Array<String>, viewModel: AuthViewModel) {
         }
     }
 }
+
+@Composable
+fun BottomSheet() {
+
+}

@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    XuleMainScreen(this,"Android")
+                    XuleMainScreen(this,"Android", true, activity = this)
 
                     var isConsent by remember { mutableStateOf(false) }
                     val permissions = rememberLauncherForActivityResult(
